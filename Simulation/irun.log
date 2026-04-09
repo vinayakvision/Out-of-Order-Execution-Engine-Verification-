@@ -1,0 +1,83 @@
+irun(64): 15.20-s086: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
+TOOL:	irun(64)	15.20-s086: Started on Apr 09, 2026 at 17:23:59 IST
+irun
+	-access +rwc
+	ooo_engine.sv
+	ooo_engine_tb.sv
+file: ooo_engine.sv
+	module worklib.ooo_engine:sv
+		errors: 0, warnings: 0
+file: ooo_engine_tb.sv
+	module worklib.ooo_engine_tb:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		ooo_engine_tb
+ncelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.ooo_engine:sv <0x705e0d69>
+			streams:  40, words: 25782
+		worklib.ooo_engine_tb:sv <0x523a08bb>
+			streams:  31, words: 34743
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		              Instances  Unique
+		Modules:              2       2
+		Registers:           84      84
+		Scalar wires:        15       -
+		Vectored wires:      13       -
+		Always blocks:        2       2
+		Initial blocks:      10      10
+		Cont. assignments:    7       7
+		Pseudo assignments:  14      14
+	Writing initial simulation snapshot: worklib.ooo_engine_tb:sv
+Loading snapshot worklib.ooo_engine_tb:sv .................... Done
+ncsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+ncsim> source /home/installs/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+
+[0 ns] Reset released  (r0=0 r1=1 r2=2 r3=3)
+
+ TC1: Single ADD 
+  [SEND]  ADD r2=r0+r1               dest=r2  exp=0x01
+  [PASS]  ADD r2=r0+r1               dest=r2  got=0x01
+
+ TC2: Single SUB 
+  [SEND]  SUB r5=r3-r2               dest=r5  exp=0x02
+  [PASS]  SUB r5=r3-r2               dest=r5  got=0x02
+
+ TC3: RAW Hazard (I2 waits for I1) 
+  [SEND]  ADD r4=r1+r2 (produces)    dest=r4  exp=0x02
+  [SEND]  SUB r6=r4-r3 (RAW on r4)   dest=r6  exp=0xff
+  [PASS]  ADD r4=r1+r2 (produces)    dest=r4  got=0x02
+  [PASS]  SUB r6=r4-r3 (RAW on r4)   dest=r6  got=0xff
+
+ TC4: Independent OOO Instructions 
+  [SEND]  ADD r0=r1+r2               dest=r0  exp=0x02
+  [SEND]  ADD r1=r3+r4               dest=r1  exp=0x05
+  [PASS]  ADD r0=r1+r2               dest=r0  got=0x02
+  [PASS]  ADD r1=r3+r4               dest=r1  got=0x05
+
+ TC5: All Four Opcodes 
+  [SEND]  ADD r7=r0+r1               dest=r7  exp=0x07
+  [SEND]  SUB r7=r7-r2               dest=r7  exp=0x06
+  [SEND]  AND r7=r7&r3               dest=r7  exp=0x02
+  [PASS]  ADD r7=r0+r1               dest=r7  got=0x07
+  [SEND]  OR  r7=r7|r4               dest=r7  exp=0x02
+  [PASS]  SUB r7=r7-r2               dest=r7  got=0x06
+  [PASS]  AND r7=r7&r3               dest=r7  got=0x02
+  [PASS]  OR  r7=r7|r4               dest=r7  got=0x02
+  SIMULATION COMPLETE  |  PASS: 10  |  FAIL: 0
+   ALL TESTS PASSED - DESIGN VERIFIED 
+
+Simulation stopped via $stop(1) at time 745 NS + 0
+./ooo_engine_tb.sv:245     $stop;
+ncsim> simvision wave.shm
+
+-------------------------------------
+Relinquished control to SimVision...
+ncsim> 
+ncsim> TOOL:	irun(64)	15.20-s086: Exiting on Apr 09, 2026 at 17:30:21 IST  (total: 00:06:22)

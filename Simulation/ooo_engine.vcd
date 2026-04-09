@@ -1,0 +1,1024 @@
+$date
+    Apr  9, 2026  17:24:00
+$end
+$version
+    TOOL:	ncsim(64)	15.20-s086
+$end
+$timescale
+    1 ns
+$end
+
+$scope module ooo_engine_tb $end
+$var reg       1 !    clk  $end
+$var reg       1 "    rstn  $end
+$var reg       8 #    if_opcode [7:0] $end
+$var reg       3 $    if_src1 [2:0] $end
+$var reg       3 %    if_src2 [2:0] $end
+$var reg       3 &    if_dest [2:0] $end
+$var reg       1 '    if_valid  $end
+$var reg       1 (    if_ready  $end
+$var reg       1 )    cm_valid  $end
+$var reg       3 *    cm_dest [2:0] $end
+$var reg       8 +    cm_data [7:0] $end
+$var reg       8 ,    cm_opcode [7:0] $end
+$var reg       1 -    rob_full  $end
+$var reg       1 .    iq_full  $end
+$var integer  32 /    pass_cnt  $end
+$var integer  32 0    fail_cnt  $end
+
+$scope module dut $end
+$var parameter 32 1    IQ_DEPTH  $end
+$var parameter 32 2    RS_DEPTH  $end
+$var parameter 32 3    ROB_DEPTH  $end
+$var parameter 32 4    RF_SIZE  $end
+$var wire      1 5    clk  $end
+$var wire      1 6    rstn  $end
+$var wire      8 7    if_opcode [7:0] $end
+$var wire      3 8    if_src1 [2:0] $end
+$var wire      3 9    if_src2 [2:0] $end
+$var wire      3 :    if_dest [2:0] $end
+$var wire      1 ;    if_valid  $end
+$var reg       1 <    if_ready  $end
+$var reg       1 =    cm_valid  $end
+$var reg       3 >    cm_dest [2:0] $end
+$var reg       8 ?    cm_data [7:0] $end
+$var reg       8 @    cm_opcode [7:0] $end
+$var reg       1 A    rob_full  $end
+$var reg       1 B    iq_full  $end
+$var reg       2 C    iq_head [1:0] $end
+$var reg       2 D    iq_tail [1:0] $end
+$var reg       3 E    iq_count [2:0] $end
+$var reg       2 F    rob_head [1:0] $end
+$var reg       2 G    rob_tail [1:0] $end
+$var reg       3 H    rob_count [2:0] $end
+$var reg       1 I    ex_valid  $end
+$var reg       8 J    ex_opcode [7:0] $end
+$var reg       3 K    ex_dest [2:0] $end
+$var reg       2 L    ex_rob_tag [1:0] $end
+$var reg       8 M    ex_val1 [7:0] $end
+$var reg       8 N    ex_val2 [7:0] $end
+$var reg       1 O    wb_valid  $end
+$var reg       2 P    wb_rob_tag [1:0] $end
+$var reg       8 Q    wb_result [7:0] $end
+$var reg       3 R    wb_dest [2:0] $end
+$var reg       8 S    wb_opcode [7:0] $end
+$upscope $end
+
+$upscope $end
+
+$enddefinitions $end
+$dumpvars
+b1000 4
+b100 3
+b100 2
+b100 1
+0!
+0"
+b0 #
+b0 $
+b0 %
+b0 &
+0'
+1(
+0)
+b0 *
+b0 +
+b0 ,
+0-
+0.
+b0 /
+b0 0
+05
+06
+b0 7
+b0 8
+b0 9
+b0 :
+0;
+1<
+0=
+b0 >
+b0 ?
+b0 @
+0A
+0B
+b0 C
+b0 D
+b0 E
+b0 F
+b0 G
+b0 H
+0I
+bx J
+bx K
+bx L
+bx M
+bx N
+0O
+b0 P
+b0 Q
+b0 R
+b0 S
+$end
+#5
+1!
+15
+#10
+0!
+05
+#15
+1!
+15
+#20
+0!
+05
+#25
+1!
+15
+#30
+0!
+05
+#35
+1!
+1"
+16
+15
+bx P
+bx R
+bx S
+#40
+0!
+05
+#45
+1!
+15
+#50
+0!
+05
+#55
+1!
+15
+#60
+0!
+05
+#65
+1!
+15
+b1 #
+b1 %
+b10 &
+1'
+1;
+b10 :
+b1 9
+b1 7
+#70
+0!
+05
+#75
+1!
+15
+0'
+b1 D
+b1 E
+0;
+#80
+0!
+05
+#85
+1!
+15
+b1 G
+b1 H
+b1 C
+b0 E
+b10 >
+b1 @
+b1 ,
+b10 *
+#90
+0!
+05
+#95
+1!
+15
+1I
+b1 J
+b10 K
+b0 L
+b0 M
+b1 N
+#100
+0!
+05
+#105
+1!
+15
+1O
+b0 P
+b10 R
+b1 S
+b1 Q
+0I
+#110
+0!
+05
+#115
+1!
+15
+0O
+b0 Q
+1=
+b1 ?
+b1 +
+1)
+#120
+0!
+05
+#125
+1!
+b1 /
+15
+b1 F
+b0 H
+0=
+b0 >
+b0 ?
+b0 @
+b0 ,
+b0 +
+b0 *
+0)
+#130
+0!
+05
+#135
+1!
+15
+#140
+0!
+05
+#145
+1!
+15
+#150
+0!
+05
+#155
+1!
+15
+#160
+0!
+05
+#165
+1!
+15
+#170
+0!
+05
+#175
+1!
+15
+b10 #
+b11 $
+b10 %
+b101 &
+1'
+1;
+b101 :
+b10 9
+b11 8
+b10 7
+#180
+0!
+05
+#185
+1!
+15
+0'
+b10 D
+b1 E
+0;
+#190
+0!
+05
+#195
+1!
+15
+b10 G
+b1 H
+b10 C
+b0 E
+b101 >
+b10 @
+b10 ,
+b101 *
+#200
+0!
+05
+#205
+1!
+15
+1I
+b10 J
+b101 K
+b1 L
+b11 M
+#210
+0!
+05
+#215
+1!
+15
+1O
+b1 P
+b101 R
+b10 S
+b10 Q
+0I
+#220
+0!
+05
+#225
+1!
+15
+0O
+b0 Q
+1=
+b10 ?
+b10 +
+1)
+#230
+0!
+05
+#235
+1!
+b10 /
+15
+b10 F
+b0 H
+0=
+b0 >
+b0 ?
+b0 @
+b0 ,
+b0 +
+b0 *
+0)
+#240
+0!
+05
+#245
+1!
+15
+#250
+0!
+05
+#255
+1!
+15
+#260
+0!
+05
+#265
+1!
+15
+#270
+0!
+05
+#275
+1!
+15
+#280
+0!
+05
+#285
+1!
+15
+b1 #
+b1 $
+b100 &
+1'
+1;
+b100 :
+b1 8
+b1 7
+#290
+0!
+05
+#295
+1!
+15
+0'
+b11 D
+b1 E
+0;
+#300
+0!
+05
+#305
+1!
+15
+b10 #
+b100 $
+b11 %
+b110 &
+1'
+b11 G
+b1 H
+b11 C
+b0 E
+b100 >
+b1 @
+1;
+b110 :
+b11 9
+b100 8
+b10 7
+b1 ,
+b100 *
+#310
+0!
+05
+#315
+1!
+15
+0'
+1I
+b1 J
+b100 K
+b10 L
+b1 M
+b0 D
+b1 E
+0;
+#320
+0!
+05
+#325
+1!
+15
+1O
+b10 P
+b100 R
+b1 S
+b10 Q
+0I
+b0 G
+b10 H
+b0 C
+b0 E
+#330
+0!
+05
+#335
+1!
+15
+0O
+b0 Q
+1=
+b10 ?
+b10 +
+1)
+#340
+0!
+05
+#345
+1!
+b11 /
+15
+1I
+b10 J
+b110 K
+b11 L
+b10 M
+b11 N
+b11 F
+b1 H
+0=
+b110 >
+b0 ?
+b10 @
+b10 ,
+b0 +
+b110 *
+0)
+#350
+0!
+05
+#355
+1!
+15
+1O
+b11 P
+b110 R
+b10 S
+b11111111 Q
+0I
+#360
+0!
+05
+#365
+1!
+15
+0O
+b0 Q
+1=
+b11111111 ?
+b11111111 +
+1)
+#370
+0!
+05
+#375
+1!
+b100 /
+15
+b0 F
+b0 H
+0=
+b10 >
+b1 ?
+b1 @
+b1 ,
+b1 +
+b10 *
+0)
+#380
+0!
+05
+#385
+1!
+15
+#390
+0!
+05
+#395
+1!
+15
+#400
+0!
+05
+#405
+1!
+15
+#410
+0!
+05
+#415
+1!
+15
+#420
+0!
+05
+#425
+1!
+15
+b1 #
+b1 $
+b10 %
+b0 &
+1'
+1;
+b0 :
+b10 9
+b1 8
+b1 7
+#430
+0!
+05
+#435
+1!
+15
+0'
+b1 D
+b1 E
+0;
+#440
+0!
+05
+#445
+1!
+15
+b11 $
+b100 %
+b1 &
+1'
+b1 G
+b1 H
+b1 C
+b0 E
+b0 >
+b0 ?
+1;
+b1 :
+b100 9
+b11 8
+b0 +
+b0 *
+#450
+0!
+05
+#455
+1!
+15
+0'
+1I
+b1 J
+b0 K
+b0 L
+b1 M
+b1 N
+b10 D
+b1 E
+0;
+#460
+0!
+05
+#465
+1!
+15
+1O
+b0 P
+b0 R
+b1 S
+b10 Q
+0I
+b10 G
+b10 H
+b10 C
+b0 E
+#470
+0!
+05
+#475
+1!
+15
+0O
+b0 Q
+1I
+b1 K
+b1 L
+b11 M
+b10 N
+1=
+b10 ?
+b10 +
+1)
+#480
+0!
+05
+#485
+1!
+b101 /
+15
+1O
+b1 P
+b1 R
+b101 Q
+0I
+b1 F
+b1 H
+0=
+b1 >
+b0 ?
+b0 +
+b1 *
+0)
+#490
+0!
+05
+#495
+1!
+15
+0O
+b0 Q
+1=
+b101 ?
+b101 +
+1)
+#500
+0!
+05
+#505
+1!
+b110 /
+15
+b10 F
+b0 H
+0=
+b100 >
+b10 ?
+b10 +
+b100 *
+0)
+#510
+0!
+05
+#515
+1!
+15
+#520
+0!
+05
+#525
+1!
+15
+#530
+0!
+05
+#535
+1!
+15
+#540
+0!
+05
+#545
+1!
+15
+#550
+0!
+05
+#555
+1!
+15
+b0 $
+b1 %
+b111 &
+1'
+1;
+b111 :
+b1 9
+b0 8
+#560
+0!
+05
+#565
+1!
+15
+0'
+b11 D
+b1 E
+0;
+#570
+0!
+05
+#575
+1!
+15
+b10 #
+b111 $
+b10 %
+1'
+b11 G
+b1 H
+b11 C
+b0 E
+b111 >
+b0 ?
+1;
+b10 9
+b111 8
+b10 7
+b0 +
+b111 *
+#580
+0!
+05
+#585
+1!
+15
+0'
+1I
+b111 K
+b10 L
+b10 M
+b101 N
+b0 D
+b1 E
+0;
+#590
+0!
+05
+#595
+1!
+15
+b11 #
+b11 %
+1'
+1O
+b10 P
+b111 R
+b111 Q
+0I
+b0 G
+b10 H
+b0 C
+b0 E
+1;
+b11 9
+b11 7
+#600
+0!
+05
+#605
+1!
+15
+0'
+0O
+b0 Q
+b1 D
+b1 E
+1=
+b111 ?
+0;
+b111 +
+1)
+#610
+0!
+05
+#615
+1!
+b111 /
+15
+b100 #
+b100 %
+1'
+1I
+b10 J
+b11 L
+b111 M
+b1 N
+b11 F
+b11 H
+b1 G
+b1 C
+b0 E
+0=
+b0 ?
+b10 @
+1;
+b100 9
+b100 7
+b10 ,
+b0 +
+0)
+#620
+0!
+05
+#625
+1!
+15
+0'
+1O
+b11 P
+b10 S
+b110 Q
+0I
+b10 D
+b1 E
+0;
+#630
+0!
+05
+#635
+1!
+15
+0O
+b0 Q
+b10 G
+b100 H
+b10 C
+b0 E
+1=
+b110 ?
+1A
+1-
+b110 +
+1)
+#640
+0!
+05
+#645
+1!
+b1000 /
+15
+1I
+b11 J
+b0 L
+b110 M
+b11 N
+b0 F
+b11 H
+0=
+b0 ?
+b11 @
+0A
+0-
+b11 ,
+b0 +
+0)
+#650
+0!
+05
+#655
+1!
+15
+1O
+b0 P
+b11 S
+b10 Q
+0I
+#660
+0!
+05
+#665
+1!
+15
+0O
+b0 Q
+1=
+b10 ?
+b10 +
+1)
+#670
+0!
+05
+#675
+1!
+b1001 /
+15
+1I
+b100 J
+b1 L
+b10 M
+b10 N
+b1 F
+b10 H
+0=
+b0 ?
+b100 @
+b100 ,
+b0 +
+0)
+#680
+0!
+05
+#685
+1!
+15
+1O
+b1 P
+b100 S
+b10 Q
+0I
+#690
+0!
+05
+#695
+1!
+15
+0O
+b0 Q
+1=
+b10 ?
+b10 +
+1)
+#700
+0!
+05
+#705
+1!
+b1010 /
+15
+b10 F
+b1 H
+0=
+b111 ?
+b1 @
+b1 ,
+b111 +
+0)
+#710
+0!
+05
+#715
+1!
+15
+#720
+0!
+05
+#725
+1!
+15
+#730
+0!
+05
+#735
+1!
+15
+#740
+0!
+05
+#745
+1!
